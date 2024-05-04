@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+
+  <style>
+    label {
+      width: 100px;
+      display: inline-block;
+    }
+
+    span {
+      color: red;
+    }
+
+    table {
+      text-align: center;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+  />
+
+  <script src="script.js"></script>
+</head>
+
+<body>
+<h1>Bestlling av kinobilletter</h1>
+
+<label for="film-liste">Velg film:</label><br />
+
+<select
+        id="film-liste"
+        class="form-control"
+        style="width: 200px"
+        data-style="btn-light"
+>
+  <option value="1" disabled selected hidden>Velg film her</option>
+  <option value="Venom">Venom</option>
+  <option value="Fast and Furious">Fast and Furious</option>
+  <option value="Harry Potter">Harry Potter</option>
+</select>
+
+<span id="tom-film"></span>
+
+<br /><br />
+
+<label for="antall-felt">Antall:</label>
+<input
+        class="form-control"
+        style="width: 200px"
+        type="number"
+        id="antall-felt"
+/>
+<span id="tom-antall"></span>
+
+<br />
+
+<label for="fornavn-felt">Fornavn:</label>
+<input
+        class="form-control"
+        style="width: 200px"
+        type="text"
+        id="fornavn-felt"
+/>
+<span id="tom-fornavn"></span>
+
+<br />
+
+<label for="etternavn-felt">Etternavn:</label>
+<input
+        class="form-control"
+        style="width: 200px"
+        type="text"
+        id="etternavn-felt"
+/>
+<span id="tom-etternavn"></span>
+
+<br />
+
+<label for="telefonnr-felt">Telefonnr:</label>
+<input
+        class="form-control"
+        style="width: 200px"
+        type="text"
+        id="telefonnr-felt"
+/>
+<span id="tom-telefonnr"></span>
+
+<br />
+
+<label for="epost-felt">Epost:</label>
+<input
+        class="form-control"
+        style="width: 200px"
+        type="text"
+        id="epost-felt"
+/>
+<span id="tom-epost"></span>
+
+<br /><br />
+
+<input
+        type="button"
+        class="btn btn-success"
+        value="Kjøp billett"
+        id="kjop-btn"
+        onclick="kjopBillett()"
+/>
+
+<br />
+
+<h3>Alle biletter</h3>
+
+<table class="table table-striped" id="utskrift"></table>
+
+<input
+        type="button"
+        class="btn btn-danger"
+        value="Slett alle bilettene"
+        id="slett-btn"
+        onclick="slettBiletter()"
+/>
+</body>
+</html>
