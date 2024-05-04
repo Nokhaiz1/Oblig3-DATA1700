@@ -32,7 +32,10 @@ function kjopBillett() {
   console.log(kunde);
   $.post("/lagre", kunde, function () {
     hentAlle();
+  }).fail(function(jqXHR, textStatus, errorThrown) {
+    console.error("Request failed: " + textStatus + ", " + errorThrown);
   });
+
 
   function hentAlle() {
     $.get("/hent", function (data) {

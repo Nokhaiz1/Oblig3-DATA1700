@@ -15,18 +15,21 @@ public class BiletterRepository {
     @Autowired
     private JdbcTemplate db;
 
-    public void lagreBiletter (Biletter nyBilett){
-        String sql = "INSERT INTO BILETTER (antall, fornavn, etternavn, mobilnummer, epost, navn) VALUES(?,?,?,?,?,?)";
-
-        db.update(
-                sql,
-                nyBilett.getFilm(),
-                nyBilett.getAntall(),
-                nyBilett.getFornavn(),
-                nyBilett.getEtternavn(),
-                nyBilett.getTelefonnummer(),
-                nyBilett.getEpost()
-        );
+    public void lagreBiletter(Biletter biletter) {
+        // SQL statement excluding the 'film' column
+        String sql = "INSERT INTO Biletter (antall, fornavn, etternavn, telefonnummer, epost) VALUES (?, ?, ?, ?, ?)";
+        try {
+            db.update(sql,
+                    biletter.getAntall(),
+                    biletter.getFornavn(),
+                    biletter.getEtternavn(),
+                    biletter.getTelefonnummer(),
+                    biletter.getEpost()
+            );
+        } catch (Exception e) {
+            System.err.println("Error inserting billett into database: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public List<Biletter> hentAlle() {
