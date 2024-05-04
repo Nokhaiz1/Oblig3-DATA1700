@@ -14,7 +14,7 @@ function kjopBillett() {
   const feilTelefonnr = $("#tom-telefonnr");
   const feilEpost = $("#tom-epost");
 
-  if (!validerNavn()) {
+  if (!validerNavn() || !validerEpost() || !validerTelefonnr()) {
     // Validate the name first
     return;
   }
@@ -146,3 +146,33 @@ function validerNavn() {
     return true;
   }
 }
+
+function validerTelefonnr() {
+  const regexp = /^[0-9]{8}$/; // This regex matches exactly 8 digits
+  const telefonnr = $("#telefonnr-felt").val();
+  const feilTelefonnr = $("#tom-telefonnr");
+
+  if (!regexp.test(telefonnr)) {
+    feilTelefonnr.html("Telefonnummeret må være 8 siffer");
+    return false;
+  } else {
+    feilTelefonnr.html("");
+    return true;
+  }
+}
+
+function validerEpost() {
+  const regexp = /^[^@]+@[^@]+\.[^@]+$/; // Simple regex to check for a valid email format
+  const epost = $("#epost-felt").val();
+  const feilEpost = $("#tom-epost");
+
+  if (!regexp.test(epost)) {
+    feilEpost.html("Epost-adressen er ikke gyldig");
+    return false;
+  } else {
+    feilEpost.html("");
+    return true;
+  }
+}
+
+
