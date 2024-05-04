@@ -14,7 +14,7 @@ function kjopBillett() {
   const feilTelefonnr = $("#tom-telefonnr");
   const feilEpost = $("#tom-epost");
 
-  if (!validerNavn()) {
+  if (!validerNavn() || !validerEpost() || !validerTelefonnr()) {
     // Validate the name first
     return;
   }
@@ -134,15 +134,45 @@ function slettBiletter() {
 }
 
 function validerNavn() {
-  const regexp = /^[A-Za-z]{2,32}$/; // This regex matches exactly 4 uppercase letters
+  const regexp = /^[a-zA-Z]{2,30}$/; // This regex matches exactly 4 uppercase letters
   const fNavn = $("#fornavn-felt").val();
   const feilFornavn = $("#tom-fornavn");
 
   if (!regexp.test(fNavn)) {
-    feilFornavn.html("Fornavnet må være 4 store bokstaver");
+    feilFornavn.html("Fornavnet må inneholde 2 til 30 bokstaver og bare bokstaver");
     return false;
   } else {
     feilFornavn.html("");
     return true;
   }
 }
+
+function validerTelefonnr() {
+  const regexp = /^[0-9]{8}$/; // This regex matches exactly 8 digits
+  const telefonnr = $("#telefonnr-felt").val();
+  const feilTelefonnr = $("#tom-telefonnr");
+
+  if (!regexp.test(telefonnr)) {
+    feilTelefonnr.html("Telefonnummeret må være 8 siffer");
+    return false;
+  } else {
+    feilTelefonnr.html("");
+    return true;
+  }
+}
+
+function validerEpost() {
+  const regexp = /^[^@]+@[^@]+\.[^@]+$/; // Simple regex to check for a valid email format
+  const epost = $("#epost-felt").val();
+  const feilEpost = $("#tom-epost");
+
+  if (!regexp.test(epost)) {
+    feilEpost.html("Epost-adressen er ikke gyldig");
+    return false;
+  } else {
+    feilEpost.html("");
+    return true;
+  }
+}
+
+

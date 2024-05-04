@@ -134,12 +134,12 @@ function slettBiletter() {
 }
 
 function validerNavn() {
-  const regexp = /^[A-Za-z]{2,32}$/; // This regex matches exactly 4 uppercase letters
+  const regexp = /^[a-zA-Z]{2,30}$/; // This regex matches exactly 4 uppercase letters
   const fNavn = $("#fornavn-felt").val();
   const feilFornavn = $("#tom-fornavn");
 
   if (!regexp.test(fNavn)) {
-    feilFornavn.html("Fornavnet må være 4 store bokstaver");
+    feilFornavn.html("Fornavnet må inneholde 2 til 30 bokstaver og bare bokstaver");
     return false;
   } else {
     feilFornavn.html("");
